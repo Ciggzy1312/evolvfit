@@ -1,7 +1,12 @@
 const express = require("express");
+const connectDB = require("./config/db");
+const dotenv = require('dotenv').config();
+
 const foodItem = require("./routes/foodItem");
 const meal = require("./routes/meal");
 const users = require("./routes/users");
+
+connectDB();
 
 const app = express();
 

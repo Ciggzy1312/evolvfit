@@ -1,8 +1,7 @@
-const express = require('express')
+const express = require('express');
 const router = express.Router()
+const { createUser } = require('../controllers/user');
 
-router.get("/", async (req,res)=>{
-    res.json({message: "Success"})
-})
+router.post("/", createUser)
 
 module.exports = router;

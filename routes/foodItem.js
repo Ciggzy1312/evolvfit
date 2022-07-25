@@ -1,8 +1,7 @@
-const express = require('express')
+const express = require('express');
 const router = express.Router()
+const { createFoodItem } = require('../controllers/foodItem');
 
-router.get("/", async (req,res)=>{
-    res.json({message: "Success"})
-})
+router.post("/", createFoodItem)
 
 module.exports = router;

@@ -4,7 +4,6 @@ const foodItemSchema = mongoose.Schema(
     {
         name: {
             type: String,
-            required: true
         },
         calories: {
             type: Number,
@@ -23,7 +22,7 @@ const foodItemSchema = mongoose.Schema(
             enum: ["ml", "g", "liter", "kg", "item"]
         },
         itemWeight: {
-            type: mongoose.Schema.Types.Decimal128,
+            type: Number,
         },
     }
 )

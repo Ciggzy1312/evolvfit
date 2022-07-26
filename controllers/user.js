@@ -40,17 +40,23 @@ const createUserMeal = async (req,res)=>{
     }
 }
 
-const updateUser = async (req,res)=>{
+const updateUserMeal = async (req,res)=>{
 
-    const { id } = req.params;
-    const { name, calorieRequirement } = req.body;
+    const { id, mealIndex } = req.params;
+    const { date, meal } =req.body
 
     try {
-        
-        const user = await User.findByIdAndUpdate(id, {
-            name,
-            calorieRequirement
-        })
+        const user = await User.findById(id).select("mealPlan")
+
+        if(date){
+            user.mealPlan[mealIndex].date = date;
+        }
+
+        if(meal){
+            user.mealPlan[mealIndex].meal = meal;
+        }
+
+        user.save()
 
         res.status(200).json(user)
 
@@ -59,4 +65,4 @@ const updateUser = async (req,res)=>{
     }
 }
 
-module.exports = { createUser, createUserMeal, updateUser };
+module.exports = { createUser, createUserMeal, updateUserMeal };
